@@ -28,3 +28,17 @@ mtime_ms = 1793912187220
 storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:59062d27-a97c-4804-9e37-bd14d2e56e86/b48efb12-38c5-4271-bdc8-d26f31193132/da7e181e-9e9a-4c33-9e53-634a2a7a8c3d"
 storage_version_token = "1793912191908707"
 content_type = "text/html"
+
+[[outputs]]
+id = "bUsJnaiFfErhrgjl6SI4j"
+uri = "file://generated-artifacts/vitalpbx-lan-outbound-proxy.zip"
+type = "unspecified"
+title = "VitalPBX LAN SIP proxy installer"
+description = "Updated Debian 13 Kamailio SIP outbound proxy package. Configure it with your Debian IP 192.168.100.75, LAN 192.168.100.0/24, and VitalPBX 57.128.173.15."
+logical_id = "b0fbd048-ff18-4ad4-b3a5-2be1c286868a"
+content_hash = "sha256:cddad6f808f166b535db7881065fed78e5c73229ee0b77be31e60aa7fa66f3ba"
+size = 11208
+mtime_ms = 1793912182797
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:59062d27-a97c-4804-9e37-bd14d2e56e86/b0fbd048-ff18-4ad4-b3a5-2be1c286868a/7e981fbc-b6a6-4d98-a380-83c0d1008201"
+storage_version_token = "1793913468462787"
+content_type = "application/octet-stream"
