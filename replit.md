@@ -1,6 +1,22 @@
-# [Project name]
+# Local Network SIP SBC
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Installable scripts for a self-managed Linux SIP SBC and a remote WireGuard gateway
+connecting local phones to an Asterisk/VitalPBX PBX. This is not a hosted web app.
+
+## SBC deliverable
+
+- `sbc/README.md` — deployment, PBX settings, firewall, testing and rollback guide.
+- `sbc/install-local.sh` / `sbc/install-remote.sh` — appliance entry points.
+- `sbc/sbc.py` — strict JSON validation and offline config rendering.
+- `sbc/templates/` — SIP, media and isolated firewall templates.
+- `python3 sbc/build_download.py` — builds an offline HTML guide with embedded
+  downloadable scripts/ZIP in ignored `generated-artifacts/`.
+- Do not run appliance installation scripts inside Replit. They target dedicated
+  Debian 12 / Ubuntu 24.04 systemd machines and require root.
+- Asterisk integration requires PJSIP AOR `support_path=yes`, endpoint
+  `direct_media=no` and a PBX return route to the SBC tunnel address.
+- This is an initial lab build; no live PBX registration/audio validation has
+  been performed. Do not claim universal PBX compatibility or production readiness.
 
 ## Run & Operate
 

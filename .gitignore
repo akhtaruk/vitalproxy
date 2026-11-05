@@ -53,3 +53,7 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+/generated-artifacts/
+/sbc/config.json
+/sbc/*.key
+/sbc/__pycache__/

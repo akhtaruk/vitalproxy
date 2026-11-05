@@ -1,0 +1,19 @@
+# Separate table only. Existing firewall rules are not flushed or bypassed.
+table inet sbc_guard {
+  chain input {
+    type filter hook input priority -10; policy accept;
+    ip daddr @@lan_ip@@ ip saddr @@lan_cidr@@ udp dport @@sbc_sip_port@@ accept
+    iifname "wg-sbc" ip saddr @@pbx_ip@@ ip daddr @@local_tunnel_ip@@ udp dport @@sbc_sip_port@@ accept
+    udp dport @@sbc_sip_port@@ drop
+    ip daddr @@lan_ip@@ ip saddr @@lan_cidr@@ udp dport @@sbc_rtp_min@@-@@sbc_rtp_max@@ accept
+    iifname "wg-sbc" ip saddr @@pbx_ip@@ ip daddr @@local_tunnel_ip@@ udp dport @@sbc_rtp_min@@-@@sbc_rtp_max@@ accept
+    udp dport @@sbc_rtp_min@@-@@sbc_rtp_max@@ drop
+    iifname "lo" udp dport 2223 accept
+    udp dport 2223 drop
+  }
+  chain forward {
+    type filter hook forward priority -10; policy accept;
+    iifname "wg-sbc" drop
+    oifname "wg-sbc" drop
+  }
+}

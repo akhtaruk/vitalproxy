@@ -1,0 +1,1 @@
+- [SBC deployment scope](sbc-scope.md) — user controls both networks; deliver installable scripts for self-managed local SBC and remote PBX connection.

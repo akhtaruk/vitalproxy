@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "DZ23EsXjvyHd7DfKr-DYI"
+uri = "file://generated-artifacts/sbc-installation-guide.html"
+type = "html"
+title = "SBC installation guide and scripts"
+description = "Offline guide with a Download all scripts ZIP button, full source code, Debian/Ubuntu installation steps, required VitalPBX/Asterisk settings, diagnostics and rollback instructions."
+logical_id = "e7280d44-c90b-4fc5-9b1e-263a7988967f"
+content_hash = "sha256:a3a40e1668388b67b3487ecaff1a8f5d0acd335a2289dc9f8377610ff7062d4b"
+size = 164560
+mtime_ms = 1793909751188
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:59062d27-a97c-4804-9e37-bd14d2e56e86/e7280d44-c90b-4fc5-9b1e-263a7988967f/d921c7c2-8cb8-4ec5-97a2-100a06efc3dd"
+storage_version_token = "1793909757144221"
+content_type = "text/html"
