@@ -112,6 +112,13 @@ configured for UDP, the PBX address/port are correct, and firewall/NAT permit
 the request and response. If signaling works but audio does not, investigate the
 phone/PBX media route and RTP settings; this proxy does not touch RTP.
 
+If the installer stops at Kamailio's config check, the proxy was not installed,
+but the Kamailio package may have been downloaded. Newer ZIP builds support
+retries after this point. For an older bundle, update to the latest ZIP or, on
+this otherwise-dedicated Debian machine, remove the package the failed attempt
+just installed (`apt remove kamailio`) before retrying with the corrected files.
+Do not remove a Kamailio package that was already in use before this installer.
+
 ## Roll back
 
 This stops the proxy. Run during a maintenance window:

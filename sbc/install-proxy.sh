@@ -18,15 +18,18 @@ exec 9>/run/lock/sbc-proxy-installer.lock
 flock -n 9 || fail "Another proxy installation is in progress"
 STATE=/etc/sbc-proxy
 [[ ! -e "$STATE/installed" ]] || fail "Already installed; use rollback-proxy.sh first"
+if systemctl cat kamailio.service >/dev/null 2>&1; then
+  [[ -e "$STATE/package-install-in-progress" ]] ||
+    fail "An existing Kamailio service was found; it will not be replaced"
+  systemctl is-active --quiet kamailio.service &&
+    fail "Kamailio is running; stop and inspect it before retrying"
+fi
 for path in /etc/systemd/system/sbc-proxy.service \
   /etc/systemd/system/sbc-proxy-firewall.service; do
   [[ ! -e "$path" ]] || fail "Refusing to overwrite existing file: $path"
 done
 nft list table inet sbc_proxy_guard >/dev/null 2>&1 &&
   fail "Firewall table sbc_proxy_guard already exists"
-if systemctl cat kamailio.service >/dev/null 2>&1; then
-  fail "Kamailio already has a system service; this installer will not replace it"
-fi
 python3 "$HERE/proxy-config.py" validate --config "$CONFIG"
 PROXY_IP="$(python3 - "$CONFIG" <<'PY'
 import json, sys
@@ -57,6 +60,9 @@ if [[ ! -e /usr/sbin/policy-rc.d ]]; then
   chmod 755 /usr/sbin/policy-rc.d
   POLICY_CREATED=1
 fi
+# Allows a safe retry if apt installs Kamailio but its config check fails.
+install -d -o root -g root -m 700 "$STATE"
+touch "$STATE/package-install-in-progress"
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   kamailio nftables python3 iproute2
@@ -115,6 +121,7 @@ systemctl daemon-reload
 systemctl enable --now sbc-proxy-firewall.service sbc-proxy.service
 systemctl is-active --quiet sbc-proxy.service ||
   fail "SIP proxy did not start; inspect journalctl -u sbc-proxy"
+rm -f "$STATE/package-install-in-progress"
 printf '\nSIP outbound proxy installed on this Debian 13 machine.\n'
 printf 'Set phone outbound proxy to %s:%s (UDP).\n' "$PROXY_IP" "$PROXY_PORT"
 printf 'This forwards SIP signalling only; RTP audio does not pass through the proxy.\n'
