@@ -14,3 +14,17 @@ mtime_ms = 1793909873087
 storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:59062d27-a97c-4804-9e37-bd14d2e56e86/e7280d44-c90b-4fc5-9b1e-263a7988967f/ccd2e9a0-1c09-4dbd-9326-598b4b082701"
 storage_version_token = "1793910094305518"
 content_type = "text/html"
+
+[[outputs]]
+id = "B-HvlQ_4VhM1CUBBVxzuf"
+uri = "file://generated-artifacts/vitalpbx-lan-outbound-proxy.html"
+type = "html"
+title = "Simple VitalPBX LAN proxy — Debian 13 scripts"
+description = "Updated for your clarified setup: one Debian 13 computer on the local LAN, forwarding SIP to VitalPBX. No VPN or second gateway. Open the guide and download the new ZIP; the previous two-endpoint bundle is obsolete."
+logical_id = "b48efb12-38c5-4271-bdc8-d26f31193132"
+content_hash = "sha256:563f71b64099093ffd4abc5da04190b0ac893aa903f4b3cbf9f2af0ef202fe94"
+size = 76485
+mtime_ms = 1793910611989
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:59062d27-a97c-4804-9e37-bd14d2e56e86/b48efb12-38c5-4271-bdc8-d26f31193132/33d8c8c6-a297-4d7e-ac75-a034aacab87a"
+storage_version_token = "1793910617745059"
+content_type = "text/html"

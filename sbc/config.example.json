@@ -1,18 +1,7 @@
 {
-  "lan_ip": "192.168.50.10",
+  "proxy_ip": "192.168.50.10",
   "lan_cidr": "192.168.50.0/24",
-  "pbx_ip": "192.168.100.20",
+  "pbx_ip": "203.0.113.20",
   "pbx_sip_port": 5060,
-  "pbx_rtp_min": 10000,
-  "pbx_rtp_max": 20000,
-  "gateway_lan_ip": "192.168.100.10",
-  "local_tunnel_ip": "10.77.0.2",
-  "remote_tunnel_ip": "10.77.0.1",
-  "remote_endpoint": "pbx-gateway.example.com",
-  "wireguard_port": 51820,
-  "peer_public_key": "REPLACE_WITH_OTHER_DEVICE_PUBLIC_KEY",
-  "sbc_sip_port": 5060,
-  "sbc_rtp_min": 30000,
-  "sbc_rtp_max": 40000,
-  "mtu": 1380
+  "proxy_port": 5060
 }

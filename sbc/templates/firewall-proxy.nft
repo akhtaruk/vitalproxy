@@ -1,0 +1,9 @@
+# Own table only; does not flush or replace the host firewall.
+table inet sbc_proxy_guard {
+  chain input {
+    type filter hook input priority -10; policy accept;
+    ip saddr @@lan_cidr@@ ip daddr @@proxy_ip@@ udp dport @@proxy_port@@ accept
+    ip saddr @@pbx_ip@@ ip daddr @@proxy_ip@@ udp dport @@proxy_port@@ accept
+    udp dport @@proxy_port@@ drop
+  }
+}

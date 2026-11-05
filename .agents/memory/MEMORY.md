@@ -1,1 +1,1 @@
-- [SBC deployment scope](sbc-scope.md) — user controls both networks; deliver installable scripts for self-managed local SBC and remote PBX connection.
+- [VitalPBX proxy scope](sbc-scope.md) — one Debian 13 LAN SIP outbound proxy; no VPN, extra gateway or media relay.

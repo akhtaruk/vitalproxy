@@ -1,22 +1,22 @@
 # Local Network SIP SBC
 
-Installable scripts for a self-managed Linux SIP SBC and a remote WireGuard gateway
-connecting local phones to an Asterisk/VitalPBX PBX. This is not a hosted web app.
+Installable Kamailio SIP signalling proxy on one Debian 13 machine on the phone LAN,
+forwarding local phone SIP traffic to an existing VitalPBX server. No VPN or second
+gateway; media is not relayed. This is not a hosted web app.
 
 ## SBC deliverable
 
-- `sbc/README.md` — deployment, PBX settings, firewall, testing and rollback guide.
-- `sbc/install-local.sh` / `sbc/install-remote.sh` — appliance entry points.
-- `sbc/sbc.py` — strict JSON validation and offline config rendering.
-- `sbc/templates/` — SIP, media and isolated firewall templates.
+- `sbc/README.md` — installation, phone settings, firewall and rollback guide.
+- `sbc/install-proxy.sh` — single-machine Debian 13 installer.
+- `sbc/proxy-config.py` — strict configuration validation and rendering.
+- `sbc/templates/` — Kamailio routing and isolated firewall configuration.
 - `python3 sbc/build_download.py` — builds an offline HTML guide with embedded
   downloadable scripts/ZIP in ignored `generated-artifacts/`.
-- Do not run appliance installation scripts inside Replit. They target dedicated
-  Debian 12/13 or Ubuntu 24.04 systemd machines and require root.
-- Asterisk integration requires PJSIP AOR `support_path=yes`, endpoint
-  `direct_media=no` and a PBX return route to the SBC tunnel address.
-- This is an initial lab build; no live PBX registration/audio validation has
-  been performed. Do not claim universal PBX compatibility or production readiness.
+- Do not run the installer inside Replit. It targets a Debian 13 systemd machine
+  on the local phone LAN and requires root.
+- SIP signalling only: RTP/audio goes direct; new incoming calls behind NAT are
+  not supported in this first version.
+- Do not claim universal PBX compatibility or production readiness.
 
 ## Run & Operate
 
