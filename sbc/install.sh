@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run on a dedicated Debian 12 / Ubuntu 24.04 appliance, never inside Replit.
+# Run on a dedicated Debian 12/13 or Ubuntu 24.04 appliance, never inside Replit.
 set -euo pipefail
 umask 077
 HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -10,8 +10,10 @@ fail() { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
 [[ "$ACTION" == prepare || "$ACTION" == install ]] || fail "Usage: install-$ROLE.sh prepare | install /path/config.json"
 [[ -r /etc/os-release ]] || fail "Cannot identify OS"
 . /etc/os-release
-[[ "$ID:$VERSION_ID" == debian:12 || "$ID:$VERSION_ID" == ubuntu:24.04 ]] ||
-  fail "This installer targets Debian 12 or Ubuntu 24.04 only"
+case "$ID:$VERSION_ID" in
+  debian:12|debian:13|ubuntu:24.04) ;;
+  *) fail "This installer targets Debian 12/13 or Ubuntu 24.04 only" ;;
+esac
 command -v systemctl >/dev/null || fail "systemd is required"
 [[ -d /run/systemd/system ]] || fail "Boot this appliance with systemd"
 command -v flock >/dev/null || fail "flock (util-linux) is required"

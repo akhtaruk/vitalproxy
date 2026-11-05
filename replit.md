@@ -12,7 +12,7 @@ connecting local phones to an Asterisk/VitalPBX PBX. This is not a hosted web ap
 - `python3 sbc/build_download.py` — builds an offline HTML guide with embedded
   downloadable scripts/ZIP in ignored `generated-artifacts/`.
 - Do not run appliance installation scripts inside Replit. They target dedicated
-  Debian 12 / Ubuntu 24.04 systemd machines and require root.
+  Debian 12/13 or Ubuntu 24.04 systemd machines and require root.
 - Asterisk integration requires PJSIP AOR `support_path=yes`, endpoint
   `direct_media=no` and a PBX return route to the SBC tunnel address.
 - This is an initial lab build; no live PBX registration/audio validation has

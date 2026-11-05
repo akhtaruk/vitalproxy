@@ -69,7 +69,7 @@ WireGuard, Kamailio and RTPengine. All installation scripts and source are inclu
 href="data:application/zip;base64,{encoded}">Download all scripts (.zip)</a>
 <p class="checksum">ZIP SHA-256: {digest}</p></header>
 <div class="notice"><strong>Read before installation.</strong> This version targets dedicated
-Debian 12 / Ubuntu 24.04 devices and PJSIP with Path support. It has not been tested with
+Debian 12/13 / Ubuntu 24.04 devices and PJSIP with Path support. It has not been tested with
 your PBX or phones. Validate registration, incoming calls and two-way audio in a lab before
 production use. The full guide below covers required PBX routing and firewall changes.</div>
 <section><h2>Deployment</h2>
@@ -102,7 +102,7 @@ Never share the private keys. The tunnel encrypts traffic between sites, not the
 # Disconnects calls and removes the managed tunnel/configuration:
 sudo bash rollback.sh --confirm</pre></section>
 <section><h2>Complete installation guide</h2>
-<p>This same guide is included as <code>sbc/README.md</code> in the ZIP.</p>
+<p>Supported OS: Debian 12/13 and Ubuntu 24.04. This same guide is included as <code>sbc/README.md</code> in the ZIP.</p>
 <pre>{readme}</pre></section>
 <section><h2>Every script and configuration file</h2>
 <p>Expand to inspect the source or download individual files. Use the ZIP for installation:

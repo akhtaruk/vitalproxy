@@ -16,10 +16,10 @@ SIP phones → Linux SBC         ═══ WireGuard ═══       Linux gatew
                                                            192.168.100.20
 ```
 
-- **Local device:** dedicated Debian 12 or Ubuntu 24.04, systemd, two CPU cores/
+- **Local device:** dedicated Debian 12/13 or Ubuntu 24.04, systemd, two CPU cores/
   2 GB RAM suggested for a small lab. A single Ethernet interface is enough.
   Use static IP addressing or DHCP reservations. No Asterisk on this device.
-- **Remote device:** separate Debian 12 or Ubuntu 24.04 gateway on the PBX's LAN,
+- **Remote device:** separate Debian 12/13 or Ubuntu 24.04 gateway on the PBX's LAN,
   or a VM in the same routed network. It is **not** installed into the PBX OS.
   VitalPBX may use a different Linux distribution; leave that OS unchanged.
 - The remote gateway needs a public IPv4 address or UDP port forwarding
