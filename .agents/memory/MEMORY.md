@@ -1,1 +1,2 @@
 - [VitalPBX proxy scope](sbc-scope.md) — one Debian 13 LAN SIP outbound proxy; no VPN, extra gateway or media relay.
+- [Kamailio validation](kamailio-validation.md) — validate rendered SIP config with the target Kamailio parser before delivering scripts.

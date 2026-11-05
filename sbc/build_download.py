@@ -5,6 +5,10 @@ import hashlib
 import html
 import io
 import pathlib
+import shutil
+import subprocess
+import sys
+import tempfile
 import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -17,6 +21,16 @@ NAMES = (
 
 
 def main():
+    kamailio = shutil.which("kamailio")
+    if not kamailio:
+        raise SystemExit("Kamailio is required to validate the config before building the ZIP.")
+    with tempfile.TemporaryDirectory(prefix="sbc-proxy-check-") as temporary:
+        rendered = pathlib.Path(temporary) / "rendered"
+        subprocess.run([
+            sys.executable, str(ROOT / "proxy-config.py"), "render",
+            "--config", str(ROOT / "config.example.json"), "--output", str(rendered),
+        ], check=True)
+        subprocess.run([kamailio, "-c", "-f", str(rendered / "kamailio.cfg")], check=True)
     OUT.mkdir(exist_ok=True)
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:

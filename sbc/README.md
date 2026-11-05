@@ -130,3 +130,9 @@ sudo bash rollback-proxy.sh --confirm
 Only the proxy's service, config and owned firewall table are removed. The
 Kamailio package is retained. Restore the phone's outbound proxy setting if
 needed.
+
+## Building the download
+
+For maintainers, `python3 build_download.py` requires Kamailio locally and runs
+its native configuration checker before generating the ZIP. Shell/Python syntax
+checks alone cannot catch missing SIP modules or unsupported core directives.
